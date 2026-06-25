@@ -17,5 +17,5 @@ inputs:
     required: true
     description: 'the response content which we expect'
 runs:
-  using: 'node16'
+  using: 'node24'
   main: 'dist/index.js'
