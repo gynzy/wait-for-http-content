@@ -16,6 +16,10 @@ inputs:
   expectedContent:
     required: true
     description: 'the response content which we expect'
+  failureMessage:
+    required: false
+    description: 'extra message appended to the error when polling fails, e.g. pointing to a follow-up debug step'
+    default: ''
 runs:
   using: 'node24'
   main: 'dist/index.js'

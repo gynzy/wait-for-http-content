@@ -52,6 +52,7 @@ function run() {
             const attempts = parseInt(core.getInput('attempts') || '500', 10);
             const interval = parseInt(core.getInput('interval') || '1000', 10); // millieseconds
             const expectedContent = core.getInput('expectedContent');
+            const failureMessage = core.getInput('failureMessage');
             console.log(`Polling url ${url} for ${attempts} attempts with a delay of ${interval}`);
             if (expectedContent) {
                 console.log(`Awaiting specified content: ${expectedContent}`);
@@ -78,7 +79,7 @@ function run() {
                 yield (0, wait_1.wait)(interval);
                 currentAttempt++;
             }
-            throw new Error(`Error: Failed to receive expected content within specified attempts/interval.`);
+            throw new Error(`Error: Failed to receive expected content within specified attempts/interval.${failureMessage ? ` ${failureMessage}` : ''}`);
         }
         catch (error) {
             if (error instanceof Error)
